@@ -24,7 +24,7 @@ private static SessionFactory factory;
  
 public static void main(String[] args) {
   try{
-    // This step will read hibernate.cfg.xml and prepare hibernate for use
+  
     
 	  try{
 	         factory = new Configuration().configure().buildSessionFactory();
@@ -32,15 +32,7 @@ public static void main(String[] args) {
 	         System.err.println("Failed to create sessionFactory object." + ex);
 	         
 	      }
-	  
-	  /* 4 LINEAS ABAJO: PARA CREAR LA TABLA */
-	  
-	//Configuration cfg=new Configuration().configure();
-    //serviceRegistry = new ServiceRegistryBuilder().applySettings(
-    //cfg.getProperties()).getBootstrapServiceRegistry();
-    //factory = cfg.buildSessionFactory(serviceRegistry);
-    //Create employee objects to be persisted
-   
+	   
 	Employee emp1=new Employee();
     Employee emp2=new Employee();
     Employee emp3=new Employee();
@@ -59,23 +51,22 @@ public static void main(String[] args) {
     emp3.setLastName("canto");
     emp3.setEmail("pepe@gmail.com");
     
-    //Create a handler to access methods
-    MainClass handler=new MainClass();  
-    //insert records
-    //handler.insert_record(emp1);
-    //handler.insert_record(emp2);
-    //handler.insert_record(emp3); 
-    //Retrieve these records
-   //handler.getAllEmployees();
+     MainClass handler=new MainClass();
+    
+    handler.insert_record(emp1);
+    handler.insert_record(emp2);
+    handler.insert_record(emp3);
+    
+ 
     handler.getPageOfEmployees();
-    //Update a record
-  //  handler.updateEmployee(2, "testUser_01@sourabhsoni.com");
-    //Check if the record is updated
-   // handler.getEmployee(2); 
+   
+   handler.updateEmployee(2, "testUser_01@sourabhsoni.com");
+    
+   handler.getEmployee(2);
   }catch(Exception e){
     System.out.println(e.getMessage());
   }finally{
-    // Actual contact insertion will happen at this step
+    
   }
 }
  
