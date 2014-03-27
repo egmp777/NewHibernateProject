@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 22-mar-2014 14:43:26 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 22-mar-2014 16:13:21 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.cc.example.hibernate.Employee" table="EMPLOYEE">
-        <id name="id" type="long">
+    <class name="com.cc.example.hibernate.Person" table="PERSON">
+        <id name="id" type="java.lang.Long">
             <column name="ID" />
             <generator class="native" />
         </id>
@@ -14,8 +14,8 @@
         <property name="lastName" type="java.lang.String">
             <column name="LASTNAME" />
         </property>
-        <property name="email" type="java.lang.String">
-            <column name="EMAIL" />
-        </property>
+        <many-to-one name="address" class="com.cc.example.hibernate.Address" access = "field" fetch="join">
+            <column name="ADDR_ID" />
+        </many-to-one>
     </class>
 </hibernate-mapping>
